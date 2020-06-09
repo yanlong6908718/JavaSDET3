@@ -12,7 +12,7 @@ public class TestContact {
     static MainPage main;
     static ContactPage contact;
     @BeforeAll
-    static void beforeAll(){
+    static void beforeAll() throws Exception {
         main=new MainPage();
         contact=main.toContact();
     }

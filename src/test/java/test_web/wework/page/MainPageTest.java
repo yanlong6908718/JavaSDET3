@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainPageTest {
-    static MainPage main;
+    MainPage main;
     @Test
-    void toContact() {
+    void toContact() throws Exception {
         main=new MainPage();
         main.toContact();
     }

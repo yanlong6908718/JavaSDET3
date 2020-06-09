@@ -59,6 +59,11 @@ public class ContactPage extends BasePage {
     }
 
     public ContactPage delete(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         click(delete);
         click(By.linkText("确认"));
         click(By.id("clearMemberSearchInput"));
