@@ -11,10 +11,20 @@ public class ContactPage extends BasePage {
     By addMember=By.linkText("添加成员");
     By username=By.name("username");
     By delete=By.linkText("删除");
+    By addOther=By.cssSelector("i.member_colLeft_top_addBtn");
 
     public ContactPage(RemoteWebDriver driver) {
         super(driver);
     }
+
+    public ContactPage adddepatment(){
+        click(addOther);
+        click(By.cssSelector("a.js_create_party"));
+        String js="window.scrollTo(0,0)";
+        driver.executeScript(js);
+        sendKeys(By.name("name"),"depatment2");
+        return this;
+    };
 
     public ContactPage addMember(String username, String acctid, String mobile) {
         //todo:
@@ -76,7 +86,7 @@ public class ContactPage extends BasePage {
 
     public ContactPage importFromFile(URL path){
         //todo:
-        System.out.println(path.getPath());
+        System.out.println(path.getPath().toString());
 
         String path_utf="";
         try {
@@ -90,11 +100,11 @@ public class ContactPage extends BasePage {
         click(By.linkText("文件导入"));
 //        click(By.name("file"));
 //        sendKeys(By.name("file"), "C:\\fakepath\\通讯录批量导入模板.xlsx");
-        upload(By.name("file"), path_utf);
+        upload(By.name("file"), "I:/DATA/Workspace/JavaSDET3/target/classes/importfile.xlsx");  //todo 改成动态获取绝对路径
 //        driver.findElement(By.name("file")).sendKeys("/Users/seveniruby/projects/Java3/src/main/resources/通讯录批量导入模板.xlsx");
 //        sendKeys(By.name("file"), "C:\\fakepath\\通讯录批量导入模板.xlsx");
-        click(By.linkText("导入"));
-        click(By.linkText("完成"));
+        click(By.linkText("确认导入"));
+        click(By.linkText("前往查看"));
 
         return this;
     }

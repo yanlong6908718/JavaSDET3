@@ -30,7 +30,7 @@ public class TestContact {
     @Test
     void testImportFromFile(){
         //todo: 中文名
-        contact.importFromFile(this.getClass().getResource("/通讯录批量导入模板.xlsx"));
+        contact.importFromFile(this.getClass().getResource("/importfile.xlsx"));
 
     }
 

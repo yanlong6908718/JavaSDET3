@@ -19,6 +19,7 @@ public class MainPage extends BasePage{
 
         //todo: 改成从文件读取
         Thread.sleep(3000);
+//        saveCookie(driver);
         loadCookie(driver);
 //        driver.manage().addCookie(new Cookie("wwrtx.sid", "02hlx0WXpVh2ZztCiIJBeQ0MQzz9fZIQlx8ielHWU9DxyM9_zWwRBJ_zACLHO690"));
 //        driver.manage().addCookie(new Cookie("wwrtx.d2st", "a4040958"));
