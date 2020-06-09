@@ -23,8 +23,20 @@ public class ContactPage extends BasePage {
         String js="window.scrollTo(0,0)";
         driver.executeScript(js);
         sendKeys(By.name("name"),"depatment2");
+        click(By.xpath("//div[@id='__dialog__MNDialog__']/div/div[2]/div/form/div[3]/a"));
+        click(By.xpath("(//a[contains(text(),'longlongtest')])[2]"));
+        click(By.xpath("//a[contains(text(),'确定')]"));
         return this;
     };
+
+    public ContactPage deletedepatment(){
+        click(By.xpath("//a[contains(text(),'depatment2')]"));
+        click(By.xpath("//a[contains(text(),'depatment2')]/span"));
+        click(By.xpath("//a[contains(text(),'删除')]"));
+//        click(By.cssSelector("li.vakata-context-hover > a"));
+//        click(By.xpath("//a[contains(text(),'确定')]"));
+        return this;
+    }
 
     public ContactPage addMember(String username, String acctid, String mobile) {
         //todo:

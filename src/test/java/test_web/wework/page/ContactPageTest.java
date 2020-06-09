@@ -14,6 +14,6 @@ class ContactPageTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        main.toContact().adddepatment();
+        main.toContact().deletedepatment();
     }
 }
