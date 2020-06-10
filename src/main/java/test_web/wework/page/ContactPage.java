@@ -1,5 +1,6 @@
 package test_web.wework.page;
 
+import org.jetbrains.annotations.Contract;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -17,12 +18,21 @@ public class ContactPage extends BasePage {
         super(driver);
     }
 
-    public ContactPage adddepatment(){
+    public ContactPage addTag(String name){
+        click(addOther);
+        click(By.xpath("//a[contains(text(),'标签')]"));
+        click(By.cssSelector("i.member_colLeft_top_addBtn"));
+        sendKeys(By.name("name"),name);
+        click(By.xpath("//div[@id='__dialog__MNDialog__']/div/div[2]/div/form/div/a"));
+        click(By.xpath("//a[contains(text(),'所有管理员')]"));
+        click(By.xpath("//a[contains(text(),'确定')]"));
+        return this;
+    }
+
+    public ContactPage adddepatment(String name){
         click(addOther);
         click(By.cssSelector("a.js_create_party"));
-        String js="window.scrollTo(0,0)";
-        driver.executeScript(js);
-        sendKeys(By.name("name"),"depatment2");
+        sendKeys(By.name("name"),name);
         click(By.xpath("//div[@id='__dialog__MNDialog__']/div/div[2]/div/form/div[3]/a"));
         click(By.xpath("(//a[contains(text(),'longlongtest')])[2]"));
         click(By.xpath("//a[contains(text(),'确定')]"));
@@ -32,10 +42,38 @@ public class ContactPage extends BasePage {
     public ContactPage deletedepatment(){
         click(By.xpath("//a[contains(text(),'depatment2')]"));
         click(By.xpath("//a[contains(text(),'depatment2')]/span"));
-        click(By.xpath("//a[contains(text(),'删除')]"));
-//        click(By.cssSelector("li.vakata-context-hover > a"));
-//        click(By.xpath("//a[contains(text(),'确定')]"));
+        click(By.xpath("//a[contains(text(),'删除')]"));  //todo 删除定位不到跳过
+
         return this;
+    }
+
+    public String getTagDetailName(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String str=driver.findElement(By.xpath("//*[@id=\"main\"]/div/div/div[2]/div/div/div[2]/div[2]/span/span")).getText();
+        System.out.println(str);
+
+        return str;
+    }
+
+
+    public boolean getDpatmentName(String str){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        boolean result;
+        if( driver.findElements(By.xpath("//a[contains(text(),'"+str+"')]")).size()>0)
+        {
+            result=true;
+        }else{
+            result=false;
+        }
+        return result;
     }
 
     public ContactPage addMember(String username, String acctid, String mobile) {
@@ -69,6 +107,11 @@ public class ContactPage extends BasePage {
     }
 
     public ContactPage search(String keyword){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         sendKeys(By.id("memberSearchInput"), keyword);
 //        driver.findElement(By.id("memberSearchInput")).sendKeys(keyword);
 //        new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -120,4 +163,6 @@ public class ContactPage extends BasePage {
 
         return this;
     }
+
+
 }

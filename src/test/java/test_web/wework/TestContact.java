@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import test_web.wework.page.ContactPage;
 import test_web.wework.page.MainPage;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static utils.utils.RandomStr;
 
 public class TestContact {
     static MainPage main;
@@ -32,6 +34,22 @@ public class TestContact {
         //todo: 中文名
         contact.importFromFile(this.getClass().getResource("/importfile.xlsx"));
 
+    }
+
+    @Test
+    void testadddepatment(){
+        //添加部门测试
+        String str=RandomStr(5); //随机一个部门名称
+        boolean boo=contact.adddepatment(str).getDpatmentName(str);
+        System.out.println("result is:"+boo);
+        assertEquals(boo,true);
+    }
+
+    @Test
+    void testAddTag(){
+        //添加标签测试
+        String str=RandomStr(6);
+        assertEquals(contact.addTag(str).getTagDetailName(),str);
     }
 
     @AfterAll
