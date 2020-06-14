@@ -29,12 +29,14 @@ public class BasePage {
         Proxy proxy = new Proxy();  //复用浏览器需要设置代理！！！！
         driver=new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait=new WebDriverWait(driver, Duration.ofSeconds(10)); // selenium 4
+        wait=new WebDriverWait(driver,10); // selenium 3
     }
 
     public BasePage(RemoteWebDriver driver) {
         this.driver = driver;
-        wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait=new WebDriverWait(driver, Duration.ofSeconds(10));//4
+        wait=new WebDriverWait(driver, 10);//3
 
     }
 
