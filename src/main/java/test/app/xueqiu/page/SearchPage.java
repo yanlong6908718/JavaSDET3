@@ -10,6 +10,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SearchPage {
+    /*elements:
+    评论框下次再说：com.xueqiu.android:id/tv_left  立即评价：com.xueqiu.android:id/tv_right
+    搜索取消：com.xueqiu.android:id/action_close
+    自选股列表：com.xueqiu.android:id/portfolio_stockName
+    编辑自选股id：com.xueqiu.android:id/edit_group
+    全选resource-id：com.xueqiu.android:id/check_all
+    删除按钮id：com.xueqiu.android:id/cancel_follow
+
+    * */
+
     private AndroidDriver driver;
     private By nameLocator=By.id("name");
     public SearchPage(AndroidDriver driver) {
