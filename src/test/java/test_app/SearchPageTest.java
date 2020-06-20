@@ -1,10 +1,12 @@
-package test.app.xueqiu.page;
+package test_app;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import sun.applet.Main;
+import test.app.xueqiu.page.Mainpage;
+import test.app.xueqiu.page.SearchPage;
 
 import java.net.MalformedURLException;
 

@@ -12,4 +12,5 @@ class MainPageTest {
         main=new MainPage();
         main.toContact();
     }
+
 }
