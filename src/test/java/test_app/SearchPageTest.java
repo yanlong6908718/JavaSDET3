@@ -1,9 +1,11 @@
 package test_app;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import sun.applet.Main;
 import test.app.xueqiu.page.Mainpage;
 import test.app.xueqiu.page.SearchPage;
@@ -36,5 +38,11 @@ class SearchPageTest {
         assertTrue(searchpage.search("alibaba").getPrice()>200);
     }
 
+    @ParameterizedTest
+    @DisplayName("添加自选股")
+    @ValueSource(strings={"京东","宁德时代","拼多多"})
+    void addStockTest(String name){
+        searchpage.search(name).clickaddStock();
+    }
 
 }
