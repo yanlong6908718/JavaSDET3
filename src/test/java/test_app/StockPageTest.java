@@ -2,10 +2,8 @@ package test_app;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.openqa.selenium.By;
-import test.app.xueqiu.page.Mainpage;
+import test.app.xueqiu.page.MainPage;
 import test.app.xueqiu.page.StockPage;
 
 import java.net.MalformedURLException;
@@ -13,11 +11,11 @@ import java.net.MalformedURLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StockPageTest {
-    static Mainpage main;
+    static MainPage main;
     static StockPage stockpage;
     @BeforeAll
     static void beforell() throws MalformedURLException {
-        main=new Mainpage();
+        main=new MainPage();
         stockpage=main.toStockpage();
     }
 

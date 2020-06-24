@@ -1,13 +1,13 @@
 package test_app;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import sun.applet.Main;
-import test.app.xueqiu.page.Mainpage;
+import test.app.xueqiu.page.MainPage;
 import test.app.xueqiu.page.SearchPage;
 
 import java.net.MalformedURLException;
@@ -15,11 +15,11 @@ import java.net.MalformedURLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SearchPageTest {
-    static Mainpage mainpage;
+    static MainPage mainpage;
     static SearchPage searchpage;
     @BeforeAll
     static void beforeAll() throws MalformedURLException {
-        mainpage = new Mainpage();
+        mainpage = new MainPage();
         searchpage=mainpage.toSearchpage();
     }
 
@@ -27,6 +27,7 @@ class SearchPageTest {
     public void maintest(){
         mainpage.toSearchpage();
     }
+
     @ParameterizedTest
     @CsvSource({   "alibaba,阿里巴巴","jd,京东" })
     void search(String keyword,String name) {
@@ -43,6 +44,11 @@ class SearchPageTest {
     @ValueSource(strings={"京东","宁德时代","拼多多"})
     void addStockTest(String name){
         searchpage.search(name).clickaddStock();
+    }
+
+    @AfterAll
+    static void afterall(){
+        searchpage.quit();
     }
 
 }
