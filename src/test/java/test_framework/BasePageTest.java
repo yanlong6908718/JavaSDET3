@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BasePageTest {
-    static BasePage basepage;
+    private static BasePage basepage;
     @BeforeAll
     static void befforeAll() {
         basepage= new BasePage();
@@ -42,7 +42,9 @@ class BasePageTest {
 
     @Test
     void load() {
-        UIauto auto=basepage.load(this.getClass().getResource("D:\\workspace\\JavaSDET3\\src\\main\\resources\\uiauto\\uiauto.yaml").getPath());
+//        String path=this.getClass().getResource("D:\\workspace\\JavaSDET3\\src\\main\\resources\\uiauto\\uiauto.yaml").getPath();
+//        System.out.println(path);
+        UIauto auto=basepage.load("/uiauto/uiauto.yaml");
         ObjectMapper mapper= new ObjectMapper();
         try {
             System.out.println(mapper.writeValueAsString(auto));

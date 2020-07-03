@@ -6,6 +6,6 @@ import java.util.List;
 public class UIauto {
     public String name="";
     public String description="";
-    public List<HashMap<String,Object>> staps;
+    public List<HashMap<String,Object>> steps;
 
 }
