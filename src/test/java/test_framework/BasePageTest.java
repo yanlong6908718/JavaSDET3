@@ -38,6 +38,8 @@ class BasePageTest {
 
     @Test
     void run() {
+        UIauto auto=basepage.load("/uiauto/uiauto.yaml");
+        basepage.run(auto);
     }
 
     @Test
