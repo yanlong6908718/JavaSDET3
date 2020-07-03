@@ -1,0 +1,11 @@
+name: xxx
+description: xxxx
+steps:
+  # 基本自动化领域模型
+  # 业务模型
+  - method: click
+    params: [1,2]
+  - action: click
+    by: id
+    locator: search
+  - action: click
