@@ -12,7 +12,16 @@ import java.util.List;
 //自动化领域建模
 public class BasePage {
     public void click(HashMap<String, Object> map){
+        System.out.println("click");
         System.out.println(map);
+    }
+
+    public void sendkeys(HashMap<String, Object> map){
+
+    }
+
+    public void action(HashMap<String, Object> map){
+
     }
 
     public void find(){
@@ -28,9 +37,21 @@ public class BasePage {
     }
     public  void run(UIauto auto){
         auto.steps.stream().forEach(m ->{
-            if(m.keySet().contains("click")){
-                click((HashMap<String,Object>) m.get("click"));
+//            if(m.keySet().contains("click")){
+//                click((HashMap<String,Object>) m.get("click"));
+//            }
+
+            if(m.containsKey("click")){
+                HashMap<String ,Object> by =(HashMap<String ,Object>) m.get("click");
+                click(by);
             }
+            if (m.containsKey("sendkeys")){
+                sendkeys(m);
+            }
+            if (m.containsKey("action")){
+                action(m);
+            }
+
         });
 
     }

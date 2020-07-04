@@ -7,30 +7,35 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test_framework.BasePage;
 
 import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class BasePage {
+public class AppBasePage extends BasePage {
     public static final int TIME_OUT_IN_SECONDS = 30;
     AppiumDriver<MobileElement> driver;
     WebDriverWait wait;
     String packageName;
     String ActivityName;
 
-    public BasePage(AppiumDriver<MobileElement> driver) {
+    public AppBasePage(AppiumDriver<MobileElement> driver) {
 
         this.driver = driver;
         wait=new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
 
     }
 
-    public BasePage(String packagename,String ActivityName){
+    public AppBasePage(String packagename, String ActivityName){
         this.packageName=packagename;
         this.ActivityName=ActivityName;
         StartApp(this.packageName,this.ActivityName);
+    }
+
+    public AppBasePage() {
+
     }
 
 

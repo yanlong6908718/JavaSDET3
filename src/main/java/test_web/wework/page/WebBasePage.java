@@ -9,34 +9,36 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test_framework.BasePage;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 
-public class BasePage {
+public class WebBasePage extends BasePage {
     RemoteWebDriver driver;
     WebDriverWait wait;
     ChromeOptions options;
 
-    public BasePage() {
+    public WebBasePage() {
         options = new ChromeOptions();
         options.setExperimentalOption("debuggerAddress", "127.0.0.1:9222");
-        Proxy proxy = new Proxy();  //复用浏览器需要设置代理！！！！
+//        Proxy proxy = new Proxy();  //复用浏览器需要设置代理！！！！
         driver=new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //        wait=new WebDriverWait(driver, Duration.ofSeconds(10)); // selenium 4
-        wait=new WebDriverWait(driver,10); // selenium 3
+        wait=new WebDriverWait(driver,30); // selenium 3
     }
 
-    public BasePage(RemoteWebDriver driver) {
+    public WebBasePage(RemoteWebDriver driver) {
         this.driver = driver;
 //        wait=new WebDriverWait(driver, Duration.ofSeconds(10));//4
-        wait=new WebDriverWait(driver, 10);//3
+        wait=new WebDriverWait(driver, 30);//3
 
     }
 
@@ -115,4 +117,51 @@ public class BasePage {
             e.printStackTrace();
         }
     }
+
+//    @Override
+//    public void click(HashMap<String,Object> map){
+//        super.click(map);
+//        String key =(String) map.keySet().toArray()[0];
+//        String value=(String) map.values().toArray()[0];
+//
+//        By by=null;
+//        if(key.toLowerCase()=="id"){
+//            by=By.id(value);
+//        }if(key.toLowerCase()=="linkText".toLowerCase()){
+//            by=By.linkText(value);
+//        }if(key.toLowerCase()=="partialLinkText".toLowerCase()){
+//            by=By.partialLinkText(value);
+//        }
+//        click(by);
+//    }
+    @Override
+    public void click(HashMap<String, Object> map) {
+        super.click(map);
+        String key= (String) map.keySet().toArray()[0];
+        String value= (String) map.values().toArray()[0];
+
+        By by = null;
+        if(key.toLowerCase().equals("id")){
+            by=By.id(value);
+        }
+        if(key.toLowerCase().equals("linkText".toLowerCase())){
+            by=By.linkText(value);
+        }
+
+        if(key.toLowerCase().equals("partialLinkText".toLowerCase())){
+            by=By.partialLinkText(value);
+        }
+
+        click(by);
+    }
+
+    @Override
+    public void action(HashMap<String,Object> map){
+        super.action(map);
+        if(map.get("action").toString().toLowerCase().equals("get")){
+            driver.get(map.get("url").toString());
+        }
+
+    }
+
 }

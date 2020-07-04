@@ -1,16 +1,13 @@
 package test.app.wework.page;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SchedulePage extends BasePage {
+public class SchedulePage extends AppBasePage {
     private By taskName=By.id("b58");
     private By save = byText("保存");
     private By taskList=By.id("gr5");
