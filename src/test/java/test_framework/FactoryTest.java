@@ -4,8 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FactoryTest {
 
     @BeforeEach
@@ -18,7 +16,7 @@ class FactoryTest {
 
     @Test
     void create() {
-        BasePage web= Factory.create("web");
+        BasePage web= UiautoFactory.create("web");
        UIauto auto= web.load("/uiauto/webauto.yaml");
        web.run(auto);
     }

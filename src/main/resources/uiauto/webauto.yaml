@@ -6,3 +6,4 @@ steps:
   - click: {linktext: 最新}
   - click: {linktext: 热门}
   - click: {id: search}
+

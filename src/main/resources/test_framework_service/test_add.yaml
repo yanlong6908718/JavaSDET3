@@ -1,0 +1,8 @@
+name: add
+description: add
+steps:
+  - api: wework
+    action: get_token
+  - tags: list
+    params:
+      tagid: [1,2,3]
